@@ -4,10 +4,10 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 DB_CONFIG ={
-    "host": os.getenv("DB_HOST", "10.10.10.24"),
+    "host": os.getenv("DB_HOST", "localhost"),
     "port": int(os.getenv("DB_PORT", 5432)),
     "user": os.getenv("DB_USER", "postgres"),
-    "password": os.getenv("DB_PASSWORD", "123456"),
+    "password": os.getenv("DB_PASSWORD", "qwerty"),
     "database": os.getenv("DB_NAME", "qarelecturev3db")
 }
 
