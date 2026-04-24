@@ -1,5 +1,6 @@
 import helper as h
 from flask import Flask, jsonify, request
+import traceback
 
 app = Flask(__name__)
 
@@ -11,10 +12,12 @@ def read_item():
    if not idaffaire:
       return jsonify({"error": "idaffaire est requis"}), 400
    try:
-      traitementIdAffaire=h.traitementIdAffaire(idaffaire)
+      traitement = h.Traitement()
+      traitementIdAffaire=traitement.traitementIdAffaire(idaffaire)
       return jsonify({"status": "ok", "idaffaire": idaffaire,"traitementIdAffaire":traitementIdAffaire}), 200
    except Exception as e:
-         return jsonify({"error": str(e)}), 500
+      traceback.print_exc()
+      return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
    print("Starting Flask API on port 5000...")
