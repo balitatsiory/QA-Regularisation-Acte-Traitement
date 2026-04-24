@@ -5,6 +5,12 @@ import traceback
 app = Flask(__name__)
 
 
+@app.route('/api/greet', methods=['GET'])
+def greet():
+   print("Received request for /api/greet")
+   return jsonify({"message": "Hello from Flask API!"})
+
+
 @app.route('/api', methods=['POST'])
 def read_item():
    idaffaire = request.form['idaffaire']
@@ -20,5 +26,5 @@ def read_item():
       return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-   print("Starting Flask API on port 5000...")
-   app.run(port=5000)
+   print("Starting Flask API on port 5001...")
+   app.run(port=5001)
